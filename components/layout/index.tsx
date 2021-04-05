@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { META_DATA } from '@constants/site';
 import { Meta } from '@interfaces/index';
 import Navbar from '@components/navbar';
+import Footer from '@components/footer';
 
 type Props = {
   children?: ReactNode;
@@ -13,7 +14,7 @@ type Props = {
 export default function Layout({ children, meta = META_DATA }: Props) {
   const router = useRouter();
   return (
-    <div className="bg-white dark:bg-dark">
+    <div className="bg-white text-gray-900 dark:text-white dark:bg-gray-900">
       <Head>
         <title>{meta.title}</title>
         <meta charSet="utf-8" />
@@ -47,6 +48,7 @@ export default function Layout({ children, meta = META_DATA }: Props) {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0">
           {children}
         </div>
+        <Footer />
       </main>
     </div>
   );

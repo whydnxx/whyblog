@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Transition } from '@headlessui/react';
+import ThemeSwitcher from '@components/themeSwitcher';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="max-w-4xl mx-auto px-4 p-2 md:px-6 md:my-8 lg:p-8">
+    <header className="max-w-4xl mx-auto px-4 p-2 md:px-6 md:py-8 lg:p-8">
       <div className="flex items-center justify-between h-16">
         <a href="#skip" className="sr-only focus:not-sr-only">
           Skip to content
@@ -55,11 +56,11 @@ export default function Navbar() {
           </button>
         </div>
         <div className="md:flex md:justify-between w-full">
-          <a className="flex title-font font-medium items-center text-gray-900">
+          <a className="flex title-font font-medium items-center">
             <span className="text-xl uppercase mx-auto">whyblog</span>
           </a>
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4 text-gray-900">
+            <nav className="ml-10 flex items-baseline space-x-4">
               <a href="#" className="px-3 py-2 font-medium">
                 Home
               </a>
@@ -69,10 +70,13 @@ export default function Navbar() {
               <a href="#" className="px-3 py-2 font-medium">
                 About
               </a>
-            </div>
+              <ThemeSwitcher />
+            </nav>
           </div>
         </div>
-        <div className="md:hidden"></div>
+        <div className="md:hidden">
+          <ThemeSwitcher />
+        </div>
       </div>
 
       <Transition
@@ -86,7 +90,7 @@ export default function Navbar() {
       >
         {(ref) => (
           <div className="md:hidden" id="mobile-menu">
-            <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <nav ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <a href="#" className="block px-3 py-2 text-base font-medium">
                 Home
               </a>
@@ -96,10 +100,10 @@ export default function Navbar() {
               <a href="#" className="block px-3 py-2 text-base font-medium">
                 About
               </a>
-            </div>
+            </nav>
           </div>
         )}
       </Transition>
-    </nav>
+    </header>
   );
 }

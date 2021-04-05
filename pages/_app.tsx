@@ -1,8 +1,17 @@
 import type { AppProps /*, AppContext */ } from 'next/app';
 import '@styles/global.css';
+import { ThemeProvider } from 'next-themes';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <ThemeProvider
+      enableSystem={false}
+      enableColorScheme={false}
+      attribute="class"
+    >
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
 }
 
 // Only uncomment this method if you have blocking data requirements for
