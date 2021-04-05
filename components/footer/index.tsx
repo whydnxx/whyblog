@@ -1,3 +1,4 @@
+import { META_DATA } from '@constants/site';
 export default function Footer() {
   return (
     <footer className="max-w-4xl mx-auto p-8 px-4 md:px-6">
@@ -5,7 +6,7 @@ export default function Footer() {
         <div className="container mx-auto flex items-center sm:flex-row flex-col">
           <p className="text-sm text-gray-500 sm:py-2 sm:mt-0 mt-4">
             ©&nbsp;{new Date().getFullYear()}&nbsp;
-            <span className="uppercase">whyblog</span> —
+            <span className="uppercase">{META_DATA.siteName}</span> —
             <a
               href="https://whydn.dev"
               className="text-gray-600 ml-1"

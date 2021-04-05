@@ -3,6 +3,7 @@ import { Transition } from '@headlessui/react';
 import ThemeSwitcher from '@components/themeSwitcher';
 import { NAVIGATIONS } from '@constants/navbar';
 import Link from 'next/link';
+import { META_DATA } from '@constants/site';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,7 +60,9 @@ export default function Navbar() {
         </div>
         <div className="md:flex md:justify-between w-full">
           <a className="flex title-font font-medium items-center">
-            <span className="text-xl uppercase mx-auto">whyblog</span>
+            <span className="text-xl uppercase mx-auto">
+              {META_DATA.siteName}
+            </span>
           </a>
           <div className="hidden md:block">
             <nav className="ml-10 flex items-baseline space-x-4">
