@@ -7,3 +7,8 @@ export type Meta = {
   siteName: string;
   siteUrl: string;
 };
+
+export type Navigation = {
+  label: string;
+  url: string;
+};

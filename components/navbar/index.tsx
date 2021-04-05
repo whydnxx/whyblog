@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Transition } from '@headlessui/react';
 import ThemeSwitcher from '@components/themeSwitcher';
+import { NAVIGATIONS } from '@constants/navbar';
+import Link from 'next/link';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="max-w-4xl mx-auto px-4 p-2 md:px-6 md:py-8 lg:p-8">
+    <header className="max-w-4xl mx-auto px-4 p-2 md:px-6 md:py-8">
       <div className="flex items-center justify-between h-16">
         <a href="#skip" className="sr-only focus:not-sr-only">
           Skip to content
@@ -61,15 +63,13 @@ export default function Navbar() {
           </a>
           <div className="hidden md:block">
             <nav className="ml-10 flex items-baseline space-x-4">
-              <a href="#" className="px-3 py-2 font-medium">
-                Home
-              </a>
-              <a href="#" className="px-3 py-2 font-medium">
-                Blog
-              </a>
-              <a href="#" className="px-3 py-2 font-medium">
-                About
-              </a>
+              {NAVIGATIONS.map((value, key) => {
+                return (
+                  <Link key={key} href={value.url}>
+                    <a className="px-3 py-2 font-medium">{value.label}</a>
+                  </Link>
+                );
+              })}
               <ThemeSwitcher />
             </nav>
           </div>
@@ -91,15 +91,15 @@ export default function Navbar() {
         {(ref) => (
           <div className="md:hidden" id="mobile-menu">
             <nav ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a href="#" className="block px-3 py-2 text-base font-medium">
-                Home
-              </a>
-              <a href="#" className="block px-3 py-2 text-base font-medium">
-                Blog
-              </a>
-              <a href="#" className="block px-3 py-2 text-base font-medium">
-                About
-              </a>
+              {NAVIGATIONS.map((value, key) => {
+                return (
+                  <Link key={key} href={value.url}>
+                    <a className="block px-3 py-2 text-base font-medium">
+                      {value.label}{' '}
+                    </a>
+                  </Link>
+                );
+              })}
             </nav>
           </div>
         )}
