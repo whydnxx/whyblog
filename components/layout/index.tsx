@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { META_DATA } from '@constants/site';
 import { Meta } from '@interfaces/index';
+import Navbar from '@components/navbar';
 
 type Props = {
   children?: ReactNode;
@@ -41,7 +42,12 @@ export default function Layout({ children, meta = META_DATA }: Props) {
         <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
         <link rel="canonical" href={meta.siteUrl + router.asPath} />
       </Head>
-      {children}
+      <main id="skip" className="antialiased">
+        <Navbar />
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0">
+          {children}
+        </div>
+      </main>
     </div>
   );
 }
